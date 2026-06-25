@@ -1,0 +1,19 @@
+{
+  "product": "boxio",
+  "channel": "stable",
+  "latest_version": "2.2.6",
+  "minimum_supported_version": "2.2.0",
+  "db_schema_version": 21,
+  "mandatory": false,
+  "release_date": "2026-06-25",
+  "download_url": "https://github.com/SEU_USUARIO/boxio-releases/releases/download/v2.2.6/boxio_v2.2.6.zip",
+  "installer_url": "https://github.com/SEU_USUARIO/boxio-releases/releases/download/v2.2.6/BoxioSetup_2.2.6.exe",
+  "sha256": "PREENCHA_COM_SHA256_DO_ARQUIVO",
+  "notes": [
+    "Fase 1 de produção com Render + Neon implementada",
+    "Servidor de licenças FastAPI preparado para $PORT do Render",
+    "Rotas administrativas protegidas por ADMIN_API_KEY",
+    "Rate limit básico em memória para endpoints públicos",
+    "Endpoint /health/db para validação da conexão com Neon"
+  ]
+}
