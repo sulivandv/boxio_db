@@ -1,0 +1,45 @@
+# Boxio License Server - Render Blueprint
+#
+# Arquitetura Fase 1:
+# Boxio Desktop -> Render Web Service/FastAPI -> Neon PostgreSQL
+#
+# Como usar:
+# 1. Envie este projeto para um repositório GitHub privado.
+# 2. No Render, escolha New > Blueprint ou New > Web Service.
+# 3. Se usar Blueprint, selecione este arquivo render.yaml.
+# 4. Preencha as variáveis marcadas como sync: false no painel do Render.
+
+services:
+  - type: web
+    name: boxio-license-server
+    runtime: python
+    plan: free
+    region: oregon
+    rootDir: license_server
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: LICENSE_DB_SCHEMA
+        value: licensing
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: UPDATE_CHANNEL
+        value: stable
+      - key: GITHUB_OWNER
+        value: sua-conta-ou-empresa
+      - key: GITHUB_REPO
+        value: boxio-releases
+      - key: RATE_LIMIT_ENABLED
+        value: "true"
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "60"
+      - key: DATABASE_URL
+        sync: false
+      - key: LICENSE_TOKEN_SECRET
+        sync: false
+      - key: ADMIN_API_KEY
+        sync: false
